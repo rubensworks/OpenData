@@ -3,6 +3,7 @@ package openeye.storage;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
+import com.google.common.base.Charsets;
 import com.google.gson.Gson;
 
 public abstract class GsonStreamSource<T> implements IDataSource<T> {
@@ -46,7 +47,7 @@ public abstract class GsonStreamSource<T> implements IDataSource<T> {
 
 		try {
 			InputStream input = createInputStream();
-			Reader reader = new InputStreamReader(input, StandardCharsets.UTF_8);
+			Reader reader = new InputStreamReader(input, Charsets.UTF_8);
 			try {
 				return gson.fromJson(reader, cls);
 			} finally {
